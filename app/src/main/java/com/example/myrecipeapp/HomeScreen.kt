@@ -1,5 +1,6 @@
 package com.example.myrecipeapp
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -27,7 +28,7 @@ import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 
 @Composable
-fun RecipeScreen(
+fun HomeScreen(
     modifier: Modifier = Modifier,
     navController: NavController // using this navcntroller to pass onto my category screen
     ) {
@@ -44,7 +45,7 @@ fun RecipeScreen(
             }
             else ->{
                 // Load the categories
-                CategoryScreen(categories = viewState.list, navController = navController)
+                CategoryList(categories = viewState.list, navController = navController)
             }
 
         }
@@ -52,7 +53,7 @@ fun RecipeScreen(
 }
 
 @Composable
-fun CategoryScreen(categories: List<Category>, navController: NavController){
+fun CategoryList(categories: List<Category>, navController: NavController){
 //    Text("Category Screen")
     LazyVerticalGrid(
         GridCells.Fixed(2),
@@ -61,7 +62,7 @@ fun CategoryScreen(categories: List<Category>, navController: NavController){
 //        LazyGridScope
         items(categories){
             category ->
-            CategoryItem(
+            CategoryListItem(
                 category = category,
                 moveToCategoryDetail = {
                     navController.navigate(Screen.CategoryDetailScreen.createRoute(category.strCategory))
@@ -71,7 +72,7 @@ fun CategoryScreen(categories: List<Category>, navController: NavController){
     }
 }
 @Composable
-fun CategoryItem(category: Category, moveToCategoryDetail: () -> Unit){
+fun CategoryListItem(category: Category, moveToCategoryDetail: () -> Unit){
 //    Text("Category Item")
     Column(
         modifier = Modifier.padding(8.dp).fillMaxSize().clickable(onClick = moveToCategoryDetail),
