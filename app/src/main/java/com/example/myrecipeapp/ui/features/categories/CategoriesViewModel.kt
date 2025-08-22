@@ -1,10 +1,12 @@
-package com.example.myrecipeapp
+package com.example.myrecipeapp.ui.features.categories
 
 import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.myrecipeapp.data.Category
+import com.example.myrecipeapp.data.apiService
 import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
@@ -20,7 +22,7 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch {
             try {
 
-                val response = recipeService.getCategories()
+                val response = apiService.getCategories()
                 _categoryState.value = _categoryState.value.copy(
                     list = response.categories,
                     loading = false,
