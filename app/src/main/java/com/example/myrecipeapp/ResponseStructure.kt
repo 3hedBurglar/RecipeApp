@@ -12,12 +12,12 @@ data class CategoryResponse(
     val categories : List<Category>
 )
 
-data class RandomRecipe(
+data class MealDetails(
     val idMeal : Int,
     val strMeal : String,
     val strMealThumb : String
 )
 
-data class RandomResponse(
-    val meals : List<RandomRecipe>
+data class MealsResponse(
+    val meals : List<MealDetails>
 )

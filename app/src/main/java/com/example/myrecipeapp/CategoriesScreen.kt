@@ -1,6 +1,5 @@
 package com.example.myrecipeapp
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -65,7 +64,7 @@ fun CategoryList(categories: List<Category>, navController: NavController){
             CategoryListItem(
                 category = category,
                 moveToCategoryDetail = {
-                    navController.navigate(Screen.CategoryDetailScreen.createRoute(category.strCategory))
+                    navController.navigate(Screen.MealDetailScreen.createRoute(category.strCategory))
                 }
             )
         }
