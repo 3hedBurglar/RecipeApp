@@ -1,10 +1,12 @@
-package com.example.myrecipeapp
+package com.example.myrecipeapp.ui.features.mealsbycategory
 
 import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.myrecipeapp.data.MealDetails
+import com.example.myrecipeapp.data.apiService
 import kotlinx.coroutines.launch
 
 class CategoriesDetailViewModel : ViewModel () {
@@ -14,7 +16,7 @@ class CategoriesDetailViewModel : ViewModel () {
     fun fetchMealsDetailsByCategory(categoryName : String){
         viewModelScope.launch {
             try {
-                val response = recipeService.getMealsByCategoryDetail(categoryName)
+                val response = apiService.getMealsByCategoryDetail(categoryName)
                 Log.d("CategoriesDetailViewModel", "response from web = $response and $categoryName ${response.meals}")
                 _mealsDetailState.value = _mealsDetailState.value.copy(
                     list = response.meals,

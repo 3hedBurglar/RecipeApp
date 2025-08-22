@@ -1,4 +1,4 @@
-package com.example.myrecipeapp
+package com.example.myrecipeapp.ui.features.categories
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -25,6 +25,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
+import com.example.myrecipeapp.data.Category
+import com.example.myrecipeapp.navigation.Screen
 
 @Composable
 fun HomeScreen(

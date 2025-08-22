@@ -1,4 +1,4 @@
-package com.example.myrecipeapp
+package com.example.myrecipeapp.data
 
 data class Category (
     val idCategory : Int,

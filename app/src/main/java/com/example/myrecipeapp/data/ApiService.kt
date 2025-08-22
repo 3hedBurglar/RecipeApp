@@ -1,4 +1,4 @@
-package com.example.myrecipeapp
+package com.example.myrecipeapp.data
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -11,7 +11,7 @@ private val retrofit = Retrofit
     .addConverterFactory(GsonConverterFactory.create())
     .build()
 
-val recipeService: ApiService = retrofit.create(ApiService::class.java)
+val apiService: ApiService = retrofit.create(ApiService::class.java)
 
 
 interface ApiService{
