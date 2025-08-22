@@ -12,13 +12,8 @@ class MainViewModel : ViewModel() {
     private val _categoryState = mutableStateOf(RecipeState())
 
     val categoriesState : State <RecipeState> = _categoryState
-
-    private val _randomRecipeState = mutableStateOf(randomMealState())
-    val randomRecipeState : State<randomMealState> = _randomRecipeState
-
     init {
         fetchCategories()
-//        fetchRandomRecipe()
     }
 
     private fun fetchCategories(){
@@ -42,32 +37,6 @@ class MainViewModel : ViewModel() {
             }
         }
     }
-
-    private fun fetchRandomRecipe(){
-        viewModelScope.launch {
-            try{
-                val response = recipeService.getRandomRecipe()
-                _randomRecipeState.value = _randomRecipeState.value.copy(
-                    list = response.meals,
-                    loading = false,
-                    error = null
-                )
-            }
-            catch (e: Exception){
-                Log.e("MainViewModel", "Error occurred -> ${e.message}")
-                _randomRecipeState.value = _randomRecipeState.value.copy(
-                    loading = false,
-                    error = "Error fetching the categories ${e.message}"
-                )
-            }
-        }
-    }
-
-    data class randomMealState(
-        val loading : Boolean = true,
-        val list : List<RandomRecipe> = emptyList(),
-        val error : String? = null
-    )
 
     data class RecipeState(
         val loading: Boolean = true,

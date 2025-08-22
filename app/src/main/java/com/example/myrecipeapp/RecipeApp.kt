@@ -1,7 +1,6 @@
 package com.example.myrecipeapp
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHost
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -13,14 +12,14 @@ fun RecipeApp(){
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Screen.HomeScreen.route
+        startDestination = Screen.Categories.route
     ){
         composable(
-            Screen.HomeScreen.route){
+            Screen.Categories.route){
             HomeScreen(navController = navController)
         }
         composable(
-            route = Screen.CategoryDetailScreen.route, // This should resolve to "your_route_name/{strCategory}"
+            route = Screen.MealDetailScreen.route, // This should resolve to "your_route_name/{strCategory}"
             arguments = listOf(navArgument("strCategory") { // <<< CHECK THIS NAME
                 type = NavType.StringType
             })
